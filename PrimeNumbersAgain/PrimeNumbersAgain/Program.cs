@@ -25,8 +25,43 @@ namespace PrimeNumbersAgain
 
         static int FindNthPrime(int n)
         {
-            return 0;
+            if (n == 1) { return 2; }
+
+            int num = 3;
+            int count = 1;
+            while (true)
+            {
+                
+                if (IsPrime(num))
+                {
+                    count++;
+                }
+
+                if (count == n)
+                {
+                    return num;
+                }
+                num += 2;
+
+            }
         }
+
+
+
+        static bool IsPrime(int num)
+        {
+            for (var a = 2; a <= Math.Sqrt(num); a++)
+            {
+                if (num % a == 0)
+                {
+                    return false;
+                }
+
+            }
+            return true;
+        }
+
+
 
         static int GetNumber()
         {
@@ -54,7 +89,7 @@ namespace PrimeNumbersAgain
             Console.WriteLine(".##......##..##....##....##...##..##..........##.");
             Console.WriteLine(".##......##..##..######..##...##..######...####..");
             Console.WriteLine(".................................................\n\n");
-            Console.WriteLine("Nth Prime Solver O-Matic Online..\nGuaranteed to find primes up to 2 million in under 30 seconds!\n\n");
+            Console.WriteLine("Nth Prime Solver O-Matic Online..\nGuaranteed to find primes up to 2 million in under 3 seconds!\n\n");
             
         }
 
@@ -63,7 +98,7 @@ namespace PrimeNumbersAgain
             Console.WriteLine("\n");
             Console.Write("Time Check: ");
 
-            if (time <= 10)
+            if (time <= 3)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Pass");
