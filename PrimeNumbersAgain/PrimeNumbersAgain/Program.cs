@@ -5,6 +5,7 @@ namespace PrimeNumbersAgain
 {
     class Program
     {
+        public static int[] primeArr = new int[2000001];
         static void Main(string[] args)
         {
             int n, prime;
@@ -26,6 +27,8 @@ namespace PrimeNumbersAgain
         static int FindNthPrime(int n)
         {
             if (n == 1) { return 2; }
+            primeArr[0] = 1;
+            primeArr[1] = 2;
 
             int num = 3;
             int count = 1;
@@ -35,6 +38,7 @@ namespace PrimeNumbersAgain
                 if (IsPrime(num))
                 {
                     count++;
+                    primeArr[count] = num;
                 }
 
                 if (count == n)
@@ -50,9 +54,9 @@ namespace PrimeNumbersAgain
 
         static bool IsPrime(int num)
         {
-            for (var a = 2; a <= Math.Sqrt(num); a++)
+            for (var a = 1; primeArr[a] <= Math.Sqrt(num); a++)
             {
-                if (num % a == 0)
+                if (num % primeArr[a] == 0)
                 {
                     return false;
                 }
